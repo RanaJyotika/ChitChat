@@ -13,9 +13,9 @@ export const SocketContextProvider = ({ children }) => {
 
     const [socket, setSocket] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
-    const {authUser} = useAuthContext();
+    const { authUser } = useAuthContext();
 
-    useEffect(()=> {
+    useEffect(() => {
         if (authUser) {
             const socket = io("https://chitchat-d9ds.onrender.com/", {
                 query: {
@@ -36,9 +36,9 @@ export const SocketContextProvider = ({ children }) => {
                 setSocket(null);
             }
         }
-    } , [authUser]);
+    }, [authUser]);
 
-    return <SocketContext.Provider value={{socket,onlineUsers}} >
-            {children}
-        </SocketContext.Provider>
+    return <SocketContext.Provider value={{ socket, onlineUsers }} >
+        {children}
+    </SocketContext.Provider>
 }
